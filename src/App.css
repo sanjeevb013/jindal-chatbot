@@ -1,0 +1,316 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+  --primary-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  --secondary-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  --glass-bg: rgba(15, 23, 42, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --text-primary: #ffffff;
+  --text-secondary: #94a3b8;
+}
+
+.App {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: #020617;
+}
+
+.chatbot-container {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  z-index: 1000;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: bottom right;
+}
+
+.chatbot-container.hidden {
+  transform: scale(0.8) translateY(20px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.chatbot-container.visible {
+  transform: scale(1) translateY(0);
+  opacity: 1;
+}
+
+.chat-toggle-button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1001;
+}
+
+.chat-toggle-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(99, 102, 241, 0.6);
+}
+
+.chat-toggle-button svg {
+  width: 28px;
+  height: 28px;
+}
+
+.hero-section {
+  text-align: center;
+  color: white;
+  max-width: 800px;
+  padding: 2rem;
+  animation: fadeIn 1s ease-out;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  background: linear-gradient(to right, #818cf8, #c084fc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  color: #94a3b8;
+  margin-bottom: 2rem;
+}
+
+/* Chatbot Overrides */
+.react-chatbot-kit-chat-container {
+  width: 60vw !important;
+  height: 80vh !important;
+  border-radius: 24px !important;
+  overflow: hidden !important;
+  border: 1px solid var(--glass-border) !important;
+  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.5) !important;
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.react-chatbot-kit-chat-inner-container {
+  background: transparent !important;
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+.react-chatbot-kit-chat-header {
+  background: transparent !important;
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 700 !important;
+  padding: 24px 28px !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  color: var(--text-primary) !important;
+  font-size: 1.2rem !important;
+  letter-spacing: -0.01em !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.react-chatbot-kit-chat-header::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #22c55e;
+  border-radius: 50%;
+  margin-right: 12px;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+}
+
+.react-chatbot-kit-chat-message-container {
+  padding: 24px !important;
+  flex: 1 !important;
+  overflow-y: auto !important;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.react-chatbot-kit-chat-message-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.react-chatbot-kit-chat-input-container {
+  padding: 16px 10px !important;
+  border-top: 1px solid var(--glass-border) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  position: relative !important;
+}
+
+.react-chatbot-kit-chat-input-form {
+  display: flex !important;
+  align-items: center !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  padding: 4px 4px 4px 16px !important;
+  transition: all 0.3s ease !important;
+}
+
+.react-chatbot-kit-chat-input-form:focus-within {
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1) !important;
+}
+
+.react-chatbot-kit-chat-input {
+  background: transparent !important;
+  border: none !important;
+  color: white !important;
+  font-family: 'Inter', sans-serif !important;
+  font-size: 0.95rem !important;
+  padding: 12px 10px 12px 0 !important;
+  flex: 1 !important;
+  width: auto !important;
+  min-width: 0 !important;
+}
+
+.react-chatbot-kit-chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.react-chatbot-kit-chat-input:focus {
+  outline: none !important;
+}
+
+.react-chatbot-kit-chat-btn-send {
+  background: var(--primary-gradient) !important;
+  width: 42px !important;
+  min-width: 42px !important;
+  height: 42px !important;
+  border-radius: 12px !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border: none !important;
+  cursor: pointer !important;
+  margin-left: 8px !important;
+  transition: all 0.2s ease !important;
+  flex-shrink: 0 !important;
+}
+
+.react-chatbot-kit-chat-btn-send:hover {
+  transform: scale(1.05) !important;
+  filter: brightness(1.1) !important;
+}
+
+.react-chatbot-kit-chat-btn-send svg,
+.react-chatbot-kit-chat-btn-send-icon {
+  width: 20px !important;
+  height: 20px !important;
+  fill: white !important;
+  color: white !important;
+}
+
+.react-chatbot-kit-chat-bot-message {
+  background: #312e81 !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 18px 18px 18px 4px !important;
+  font-family: 'Inter', sans-serif !important;
+  padding: 14px 18px !important;
+  color: white !important;
+  width: auto !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-chatbot-kit-user-chat-message {
+  background: var(--secondary-gradient) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 18px 18px 4px 18px !important;
+  font-family: 'Inter', sans-serif !important;
+  padding: 14px 18px !important;
+  color: white !important;
+  font-size: 0.95rem !important;
+  line-height: 1.5 !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+.react-chatbot-kit-user-avatar-container {
+  display: none !important;
+}
+
+.react-chatbot-kit-chat-bot-message-container,
+.react-chatbot-kit-user-chat-message-container {
+  margin-bottom: 20px !important;
+}
+
+.react-chatbot-kit-chat-bot-message-arrow,
+.react-chatbot-kit-user-chat-message-arrow {
+  display: none !important;
+}
+
+.react-chatbot-kit-chat-input::placeholder {
+  color: rgba(255, 255, 255, 0.4) !important;
+  opacity: 1;
+}
+
+/* Animations */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.react-chatbot-kit-chat-bot-message-container,
+.react-chatbot-kit-user-chat-message-container {
+  margin-bottom: 24px !important;
+  animation: slideUpFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .chatbot-container {
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+
+  .chatbot-container.visible {
+    transform: none !important;
+  }
+
+  .react-chatbot-kit-chat-container {
+    width: 100vw !important;
+    height: 100vh !important;
+    border-radius: 0 !important;
+    border: none !important;
+  }
+
+  .chat-toggle-button {
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  /* You can keep it dark for a premium feel or add light mode overrides here */
+}
+
+
+
