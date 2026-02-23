@@ -1,4 +1,6 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import './CustomChatMessage.css';
 
 const CustomChatMessage = (props) => {
@@ -84,7 +86,33 @@ const CustomChatMessage = (props) => {
         </div>
       );
     }
-    return <span className="message-content">{parsedMessageText}</span>;
+    
+    // Render markdown if text contains markdown syntax, otherwise plain text
+    return (
+      <div className="message-content markdown-content">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            p: ({node, ...props}) => <p style={{margin: '8px 0'}} {...props} />,
+            ul: ({node, ...props}) => <ul style={{margin: '8px 0', paddingLeft: '20px'}} {...props} />,
+            ol: ({node, ...props}) => <ol style={{margin: '8px 0', paddingLeft: '20px'}} {...props} />,
+            li: ({node, ...props}) => <li style={{margin: '4px 0'}} {...props} />,
+            code: ({node, inline, ...props}) => 
+              inline ? 
+                <code style={{backgroundColor: 'rgba(0,0,0,0.1)', padding: '2px 4px', borderRadius: '3px'}} {...props} /> :
+                <pre style={{backgroundColor: 'rgba(0,0,0,0.1)', padding: '8px', borderRadius: '4px', overflow: 'auto'}} {...props} />,
+            a: ({node, ...props}) => <a style={{color: '#fff', textDecoration: 'underline'}} {...props} />,
+            strong: ({node, ...props}) => <strong style={{fontWeight: 'bold'}} {...props} />,
+            em: ({node, ...props}) => <em style={{fontStyle: 'italic'}} {...props} />,
+            table: ({node, ...props}) => <table style={{borderCollapse: 'collapse', width: '100%', margin: '8px 0'}} {...props} />,
+            th: ({node, ...props}) => <th style={{border: '1px solid rgba(0,0,0,0.2)', padding: '8px', textAlign: 'left', fontWeight: 'bold'}} {...props} />,
+            td: ({node, ...props}) => <td style={{border: '1px solid rgba(0,0,0,0.2)', padding: '8px'}} {...props} />,
+          }}
+        >
+          {parsedMessageText}
+        </ReactMarkdown>
+      </div>
+    );
   };
 
   return (

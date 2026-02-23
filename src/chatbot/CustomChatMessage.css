@@ -208,3 +208,124 @@
   color: #7dd3fc;
   text-decoration: underline;
 }
+/* Markdown Content Styling */
+.markdown-content {
+  color: #f1f5f9;
+  font-size: 0.87rem;
+  line-height: 1.5;
+}
+
+.markdown-content p {
+  margin: 6px 0;
+  font-size: 0.87rem;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin: 6px 0;
+  padding-left: 20px;
+}
+
+.markdown-content li {
+  margin: 2px 0;
+  color: #e2e8f0;
+  font-size: 0.87rem;
+}
+
+.markdown-content strong {
+  font-weight: 500;
+  color: #f0f9ff;
+}
+
+.markdown-content em {
+  font-style: italic;
+  color: #cbd5e1;
+}
+
+.markdown-content code {
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.83rem;
+  color: #e0e7ff;
+}
+
+.markdown-content pre {
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 8px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 6px 0;
+  border-left: 3px solid #3b82f6;
+  font-size: 0.83rem;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #e0e7ff;
+}
+
+.markdown-content a {
+  color: #38bdf8;
+  text-decoration: none;
+  border-bottom: 1px dotted #38bdf8;
+  transition: all 0.2s ease;
+}
+
+.markdown-content a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+.markdown-content table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 8px 0;
+  font-size: 0.83rem;
+}
+
+.markdown-content th {
+  background-color: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  padding: 6px 8px;
+  text-align: left;
+  font-weight: 600;
+  color: #93c5fd;
+  font-size: 0.83rem;
+}
+
+.markdown-content td {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 8px;
+  color: #e2e8f0;
+  font-size: 0.83rem;
+}
+
+.markdown-content blockquote {
+  border-left: 3px solid #3b82f6;
+  padding-left: 12px;
+  margin: 6px 0;
+  color: #cbd5e1;
+  font-style: italic;
+  font-size: 0.85rem;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  margin: 8px 0 4px 0;
+  font-weight: 500;
+  color: #f0f9ff;
+}
+
+.markdown-content h1 { font-size: 0.95rem; }
+.markdown-content h2 { font-size: 0.9rem; }
+.markdown-content h3 { font-size: 0.88rem; }
+.markdown-content h4 { font-size: 0.85rem; }
+.markdown-content h5 { font-size: 0.83rem; }
+.markdown-content h6 { font-size: 0.8rem; }
